@@ -31,7 +31,7 @@ export default class Client {
         content: await this.generateInstructions(this.plugins),
         role: "system",
       });
-      messages = config.messages;
+      messages = [...messages, ...config.messages];
       delete config.messages;
     } else {
       throw new Error("config.messages is required");
