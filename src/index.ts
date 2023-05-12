@@ -4,7 +4,7 @@ import { models } from "./types.js";
 import { CreateChatCompletionRequest } from "openai";
 import axios from "axios";
 import { prefix, formatInstructions, sufix } from "./default-instructions.js";
-
+import pluginsLinks from "./plugins.js";
 export default class Client {
   plugins: Array<string> = [];
   constructor(
@@ -80,9 +80,6 @@ export default class Client {
   }
 
   getPluginUrl(plugin): string {
-    let plugins = {
-      klarna: "https://www.klarna.com/.well-known/ai-plugin.json",
-    };
-    return plugins[plugin];
+    return pluginsLinks[plugin];
   }
 }
